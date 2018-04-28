@@ -3,7 +3,7 @@ system config file
 """
 import os
 
-download_path = '/opt/download/data'
+download_path = "/tmp/proxyDL"
 default_path_win = "C:/proxyDL"
 default_path_linux = "/tmp/proxyDL"
 

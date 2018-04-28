@@ -5,7 +5,7 @@
         {#  使用url_for来引用静态资源　#}
         <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
         {#  在flask中配置好static路径后,直接使用static路径　#}
-        <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon"/>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon"/>
         {#  引用标题   #}
         <title>
             {% block title %}{% endblock %} - Flask TODO

@@ -1,44 +1,56 @@
 {% extends "layout.html" %}
 {% block title %}proxyDL{% endblock %}
 {% block head %}
-{{ super() }}
-{#  添加自己的js文件  #}
-<script src="/static/js/app.js"></script>
+    {{ super() }}
+    {#  添加自己的js文件  #}
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 {% endblock %}
 
 {% block content %}
-{#消息提示#}
-消息提示：<p style="color: red">{{ get_flashed_messages()[0] }}</p>
-<br/>
-welcome flask index.html
+    {#消息提示#}
+    消息提示：<p style="color: red">{{ get_flashed_messages()[0] }}</p>
+    <br/>
+    welcome proxy download tools.
 
-{#获取users列表#}
-<br>
-{% if users %}
-<h1>users:</h1>
-{% for user in users %}
-{{ user }} &nbsp;
-{% endfor %}
-{% endif %}
+    {#获取users列表#}
+    <br>
+    {% if users %}
+        <h1>users:</h1>
+        {% for user in users %}
+            {{ user }} &nbsp;
+        {% endfor %}
+    {% endif %}
 
-{#获取user对象#}
-<br/>
-{% if user %}
-<h1>user:</h1>{{ user }}
-{% endif %}
+    {#获取user对象#}
+    <br/>
+    {% if user %}
+        <h1>user:</h1>{{ user }}
+    {% endif %}
 
-<br/>
-<h1>表单</h1>
-<div style="background-image: inherit;">
-    <img src="/static/images/0.jpg">
-    <form action="/download" method="post" style="background: inherit">
-         url: <textarea name="url" style="width:200px;height:80px;"></textarea>
-        cookie: <textarea name="cookie" style="width:200px;height:80px;"></textarea>
-        &nbsp;&nbsp;<button type="submit" value="提交">提交</button>
-    </form>
-</div>
-<script>
-    // 测试静态资源
-    app.alert("当前时间：" + app.time())
-</script>
+    <br/>
+    <h1>下载1</h1>
+    <div style="background-image: inherit;">
+        {#    <img src="/proxyDL/static/images/0.jpg">#}
+        <form action="/proxyDL/download" method="post" style="background: inherit">
+            url: <textarea name="url" style="width:200px;height:80px;"></textarea>
+            cookie: <textarea name="cookie" style="width:200px;height:80px;"></textarea>
+            &nbsp;&nbsp;
+            <button type="submit" value="提交">提交</button>
+        </form>
+    </div>
+    <br/>
+    <h1>下载2</h1>
+    <div style="background-image: inherit;">
+        {#    <img src="/proxyDL/static/images/0.jpg">#}
+        <form action="/proxyDL/download/proxy" method="post" style="background: inherit">
+            url: <textarea name="url" style="width:200px;height:80px;"></textarea>
+            cookie: <textarea name="cookie" style="width:200px;height:80px;"></textarea>
+            &nbsp;&nbsp;
+            <button type="submit" value="提交">提交</button>
+        </form>
+    </div>
+    <script>
+        // 测试静态资源
+        app.alert("当前时间：" + app.time())
+    </script>
 {% endblock %}
